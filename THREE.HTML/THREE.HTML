@@ -1,0 +1,54 @@
+Design an HTML page for a technical event containing event details, an event image, registration hyperlink, venue, date, and time. Clicking the event image should open the registration webpage
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Technical Event</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    .box {
+      width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    a.button {
+      display: inline-block;
+      background-color: blue;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>CodeSprint 2026</h1>
+    <p>A one-day technical event with talks, workshop and coding contest.</p>
+
+    <!-- Image par click karne se registration page khulega -->
+    <a href="https://example.com/register" target="_blank">
+      <img src="jpg photo.jpeg" alt="Event poster">
+    </a>
+
+    <h2>Event Details</h2>
+    <p><b>Date:</b> 14 November 2026</p>
+    <p><b>Time:</b> 9:30 AM to 5:00 PM</p>
+    <p><b>Venue:</b> Main Auditorium, MARWADI UNIVERSITY (RAJKOT)</p>
+
+    <a class="button" href="https://example.com/register" target="_blank">Register Now</a>
+  </div>
+
+</body>
+</html>
