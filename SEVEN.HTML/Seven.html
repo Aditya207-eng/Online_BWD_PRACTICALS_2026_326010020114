@@ -1,0 +1,51 @@
+Design an HTML5 registration form to collect name, email, password, gender, date of birth, city, course, hobbies, and address. Use appropriate HTML5 input types and form controls.
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form</title>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form>
+  Name: <input type="text" name="name" required><br><br>
+
+  Email: <input type="email" name="email" required><br><br>
+
+  Password: <input type="password" name="password" required><br><br>
+
+  Gender:
+  <input type="radio" name="gender" value="male"> Male
+  <input type="radio" name="gender" value="female"> Female<br><br>
+
+  Date of Birth: <input type="date" name="dob"><br><br>
+
+  City:
+  <select name="city">
+    <option>Ahmedabad</option>
+    <option>Surat</option>
+    <option>Vadodara</option>
+  </select><br><br>
+
+  Course:
+  <select name="course">
+    <option>BCA</option>
+    <option>B.Sc. IT</option>
+    <option>B.Com</option>
+  </select><br><br>
+
+  Hobbies:
+  <input type="checkbox" name="hobbies" value="reading"> Reading
+  <input type="checkbox" name="hobbies" value="music"> Music
+  <input type="checkbox" name="hobbies" value="sports"> Sports<br><br>
+
+  Address:<br>
+  <textarea name="address" rows="4" cols="30"></textarea><br><br>
+
+  <input type="submit" value="Register">
+  <input type="reset" value="Reset">
+</form>
+
+</body>
+</html>
