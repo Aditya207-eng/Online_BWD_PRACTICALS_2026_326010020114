@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas and SVG</title>
+</head>
+<body>
+
+  <h2>Canvas</h2>
+  <canvas id="c" width="300" height="200" style="border:1px solid black"></canvas>
+
+  <h2>SVG Logo</h2>
+  <svg width="220" height="200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="110" cy="85" r="75" fill="blue" />
+    <rect x="80" y="70" width="60" height="40" fill="white" />
+    <text x="110" y="180" font-size="14" fill="black" text-anchor="middle">MARWADI UNIVERSITY</text>
+    <text x="110" y="198" font-size="12" fill="black" text-anchor="middle">RAJKOT</text>
+  </svg>
+
+  <script>
+    var ctx = document.getElementById("c").getContext("2d");
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(20, 20, 100, 60);      // rectangle
+
+    ctx.beginPath();
+    ctx.arc(200, 50, 30, 0, 2 * Math.PI);
+    ctx.fillStyle = "red";
+    ctx.fill();                         // circle
+
+    ctx.beginPath();
+    ctx.moveTo(20, 110);
+    ctx.lineTo(280, 110);
+    ctx.stroke();                       // line
+
+    ctx.fillStyle = "black";
+    ctx.font = "24px Arial";
+    ctx.fillText("Marwadi University", 40, 160); // text
+  </script>
+
+</body>
+</html>
