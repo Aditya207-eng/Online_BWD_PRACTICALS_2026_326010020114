@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: #e8eef7;
+      margin: 0;
+      padding: 1px 15px;
+    }
+
+    .form-box {
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto;
+      padding: 25px;
+      background: white;
+      border: 3px solid #1f3a6e;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f3a6e;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 0 #f2c14e;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-style: italic;
+      padding-bottom: 10px;
+      border-bottom: 2px dashed #f2c14e;
+    }
+
+    fieldset {
+      border: 2px solid #c9d3e6;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    legend {
+      background: #1f3a6e;
+      color: white;
+      padding: 3px 12px;
+      border-radius: 15px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 4px;
+      font-weight: bold;
+      color: #1f3a6e;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 2px solid #c9d3e6;
+      border-radius: 5px;
+      font: inherit;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #f2c14e;
+      border-color: #f2c14e;
+      background: #fffdf5;
+    }
+
+    .inline label {
+      display: inline-block;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 28px;
+      margin: 5px 6px;
+      border: 2px solid #1f3a6e;
+      border-radius: 20px;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    button[type="submit"] {
+      background: #1f3a6e;
+      color: white;
+    }
+
+    button[type="reset"] {
+      background: #f2c14e;
+      color: #1f3a6e;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 480px) {
+      .form-box {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="form-box">
+    <h1>Admission Form</h1>
+    <p class="subtitle">Please fill in your details carefully</p>
+
+    <form>
+      <fieldset>
+        <legend>Personal Details</legend>
+
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label>Gender</label>
+        <div class="inline">
+          <label><input type="radio" name="gender" value="male" required> Male</label>
+          <label><input type="radio" name="gender" value="female"> Female</label>
+          <label><input type="radio" name="gender" value="other"> Other</label>
+        </div>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+
+        <label for="phone">Mobile Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter mobile number" required>
+      </fieldset>
+
+      <fieldset>
+        <legend>Course Details</legend>
+
+        <label for="course">Select Course</label>
+        <select id="course" name="course" required>
+          <option value="">-- Choose a course --</option>
+          <option value="bca">BCA</option>
+          <option value="bba">BBA</option>
+          <option value="bcom">B.Com</option>
+          <option value="ba">B.A.</option>
+          <option value="bsc">B.Sc.</option>
+        </select>
+
+        <label for="qualification">Last Qualification</label>
+        <input type="text" id="qualification" name="qualification" placeholder="e.g. 12th Pass" required>
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+      </fieldset>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
