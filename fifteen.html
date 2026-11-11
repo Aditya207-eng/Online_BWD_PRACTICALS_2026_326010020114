@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BrewBuddy</title>
+<style>
+  body { font-family: Arial; background: #fdf6ee; margin: 0; }
+
+  /* Navigation */
+  nav { background: #3b2a20; text-align: center; }
+  nav a { display: inline-block; padding: 15px 20px; color: white;
+          text-decoration: none; transition: 0.3s; }
+  nav a:hover { background: #c8742c; }
+  nav a:active { background: #8a4a14; }
+
+  /* Heading + pseudo-elements */
+  h1 { text-align: center; animation: slide 1s; }
+  h1::first-letter { color: #c8742c; font-size: 50px; }
+  h1::before { content: "☕ "; }
+  h1::after { content: " ☕"; }
+  @keyframes slide { from { opacity: 0; margin-top: -40px; } to { opacity: 1; } }
+
+  /* Image manipulation */
+  img { width: 250px; filter: grayscale(100%); transition: 0.5s; }
+  img:hover { filter: grayscale(0); transform: scale(1.1) rotate(-3deg); }
+
+  /* Cards */
+  .card { background: white; padding: 15px; margin: 10px; transition: 0.3s; }
+  .card:hover { transform: translateY(-8px); }
+  .card:first-child { border-top: 4px solid #c8742c; }
+  .card:last-child { border-top: 4px solid #3b2a20; }
+
+  /* Form */
+  input { padding: 8px; border: 2px solid #ccc; }
+  input:focus { border-color: #c8742c; outline: none; }
+  input:valid { border-color: green; }
+  input:invalid { border-color: red; }
+  input::placeholder { font-style: italic; }
+  button { padding: 8px 16px; background: #3b2a20; color: white;
+           border: none; transition: 0.3s; }
+  button:hover { background: #c8742c; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Features</a>
+  <a href="#">Contact</a>
+</nav>
+
+<h1>BrewBuddy Coffee Maker</h1>
+
+<center>
+  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="Coffee">
+</center>
+
+<div class="card">Fast Brew: ready in 3 minutes.</div>
+<div class="card">App Control: start from your phone.</div>
+
+<center>
+  <input type="email" placeholder="Enter your email" required>
+  <button>Subscribe</button>
+</center>
+
+</body>
+</html>
