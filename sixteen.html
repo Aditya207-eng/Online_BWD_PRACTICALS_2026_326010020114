@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marks Calculator</title>
+</head>
+<body>
+  <h2>Student Marks Calculator</h2>
+  <button onclick="showResult()">Enter Marks</button>
+  <h3 id="output"></h3>
+
+  <script>
+    function getGrade(percentage) {
+      if (percentage >= 90) return "A+";
+      else if (percentage >= 75) return "A";
+      else if (percentage >= 60) return "B";
+      else if (percentage >= 40) return "C";
+      else return "F";
+    }
+
+    function showResult() {
+      var maths = Number(prompt("Enter Maths marks:"));
+      var science = Number(prompt("Enter Science marks:"));
+      var english = Number(prompt("Enter English marks:"));
+      var computer = Number(prompt("Enter Computer marks:"));
+      var hindi = Number(prompt("Enter Hindi marks:"));
+
+      var total = maths + science + english + computer + hindi;
+      var percentage = total / 5;
+      var grade = getGrade(percentage);
+
+      var result;
+      if (percentage >= 40) {
+        result = "PASS";
+      } else {
+        result = "FAIL";
+      }
+
+      document.getElementById("output").innerHTML =
+        "Total: " + total + "<br>" +
+        "Percentage: " + percentage + "%<br>" +
+        "Grade: " + grade + "<br>" +
+        "Result: " + result;
+    }
+  </script>
+</body>
+</html>
