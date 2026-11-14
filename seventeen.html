@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eligibility Checker</title>
+  <style>
+    body { font-family: Arial; background: #eef2f7; padding: 20px; }
+    .box { background: #fff; padding: 20px; max-width: 380px; margin: auto; border-radius: 8px; }
+    input, button { width: 100%; padding: 8px; margin-top: 8px; box-sizing: border-box; }
+    button { background: #1e5aa8; color: #fff; border: none; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Eligibility Checker</h2>
+
+    <label>Age</label>
+    <input type="number" id="age">
+
+    <label>Attendance (%)</label>
+    <input type="number" id="attendance">
+
+    <label>Marks (%)</label>
+    <input type="number" id="marks">
+
+    <button onclick="checkEligibility()">Check Eligibility</button>
+  </div>
+
+  <script>
+    function checkEligibility() {
+      var age = Number(document.getElementById("age").value);
+      var attendance = Number(document.getElementById("attendance").value);
+      var marks = Number(document.getElementById("marks").value);
+
+      if (age <= 0 || attendance < 0 || attendance > 100 || marks < 0 || marks > 100) {
+        alert("Please enter valid values.");
+      } else if (age < 17) {
+        alert("Not Eligible: Minimum age is 17 years.");
+      } else if (attendance < 75) {
+        alert("Not Eligible: Attendance must be at least 75%.");
+      } else if (marks < 40) {
+        alert("Not Eligible: Marks must be at least 40.");
+      } else {
+        alert("Congratulations! You are eligible.");
+      }
+    }
+  </script>
+</body>
+</html>
