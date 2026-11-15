@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Registration</title>
+<style>
+  body { font-family: Arial; background: #f2f4f8; padding: 15px; }
+  .box { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+  h2 { text-align: center; }
+  label { display: block; margin-top: 10px; font-weight: bold; }
+  input[type=text], input[type=email], input[type=password],
+  input[type=tel], input[type=date], select {
+    width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box;
+  }
+  .msg { color: red; font-size: 13px; }
+  button { width: 100%; margin-top: 15px; padding: 10px; background: #2f5fd0; color: white; border: 0; }
+  #success { color: green; text-align: center; font-weight: bold; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h2>Student Registration</h2>
+  <form id="regForm">
+
+    <label>Full Name</label>
+    <input type="text" id="name">
+    <div class="msg" id="nameMsg"></div>
+
+    <label>Email</label>
+    <input type="email" id="email">
+    <div class="msg" id="emailMsg"></div>
+
+    <label>Phone Number</label>
+    <input type="tel" id="phone">
+    <div class="msg" id="phoneMsg"></div>
+
+    <label>Date of Birth</label>
+    <input type="date" id="dob">
+    <div class="msg" id="dobMsg"></div>
+
+    <label>Gender</label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other
+    <div class="msg" id="genderMsg"></div>
+
+    <label>Course</label>
+    <select id="course">
+      <option value="">-- Select --</option>
+      <option>B.Tech</option>
+      <option>BCA</option>
+      <option>MCA</option>
+      <option>Diploma</option>
+    </select>
+    <div class="msg" id="courseMsg"></div>
+
+    <label>Password</label>
+    <input type="password" id="password">
+    <div class="msg" id="passwordMsg"></div>
+
+    <label>Confirm Password</label>
+    <input type="password" id="confirm">
+    <div class="msg" id="confirmMsg"></div>
+
+    <input type="checkbox" id="terms"> I agree to the terms
+    <div class="msg" id="termsMsg"></div>
+
+    <button type="submit">Register</button>
+    <div id="success"></div>
+  </form>
+</div>
+
+<script>
+  // Message dikhane ka function
+  function show(id, text) {
+    document.getElementById(id + "Msg").textContent = text;
+    return text === "";
+  }
+
+  function checkName() {
+    var v = document.getElementById("name").value.trim();
+    if (v === "") return show("name", "Name is required.");
+    if (!/^[A-Za-z ]{3,}$/.test(v)) return show("name", "Only letters, minimum 3 characters.");
+    return show("name", "");
+  }
+
+  function checkEmail() {
+    var v = document.getElementById("email").value.trim();
+    if (v === "") return show("email", "Email is required.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return show("email", "Enter a valid email.");
+    return show("email", "");
+  }
+
+  function checkPhone() {
+    var v = document.getElementById("phone").value.trim();
+    if (v === "") return show("phone", "Phone number is required.");
+    if (!/^[0-9]{10}$/.test(v)) return show("phone", "Enter 10 digit number.");
+    return show("phone", "");
+  }
+
+  function checkDob() {
+    var v = document.getElementById("dob").value;
+    if (v === "") return show("dob", "Date of birth is required.");
+    if (new Date(v) >= new Date()) return show("dob", "Date must be in the past.");
+    return show("dob", "");
+  }
+
+  function checkGender() {
+    var chosen = document.querySelector("input[name='gender']:checked");
+    return show("gender", chosen ? "" : "Please select gender.");
+  }
+
+  function checkCourse() {
+    var v = document.getElementById("course").value;
+    return show("course", v === "" ? "Please select a course." : "");
+  }
+
+  function checkPassword() {
+    var v = document.getElementById("password").value;
+    if (v === "") return show("password", "Password is required.");
+    if (v.length < 6) return show("password", "Minimum 6 characters.");
+    if (!/[A-Za-z]/.test(v) || !/[0-9]/.test(v)) return show("password", "Use letters and numbers both.");
+    return show("password", "");
+  }
+
+  function checkConfirm() {
+    var p = document.getElementById("password").value;
+    var c = document.getElementById("confirm").value;
+    if (c === "") return show("confirm", "Confirm your password.");
+    if (p !== c) return show("confirm", "Passwords do not match.");
+    return show("confirm", "");
+  }
+
+  function checkTerms() {
+    var ok = document.getElementById("terms").checked;
+    return show("terms", ok ? "" : "You must accept the terms.");
+  }
+
+  // Events: field se bahar jaate hi check hoga
+  document.getElementById("name").addEventListener("blur", checkName);
+  document.getElementById("email").addEventListener("blur", checkEmail);
+  document.getElementById("phone").addEventListener("blur", checkPhone);
+  document.getElementById("dob").addEventListener("change", checkDob);
+  document.getElementById("course").addEventListener("change", checkCourse);
+  document.getElementById("password").addEventListener("blur", checkPassword);
+  document.getElementById("confirm").addEventListener("blur", checkConfirm);
+
+  // Submit event: sab fields check honge
+  document.getElementById("regForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var results = [checkName(), checkEmail(), checkPhone(), checkDob(), checkGender(),
+                   checkCourse(), checkPassword(), checkConfirm(), checkTerms()];
+    var allGood = results.every(function (r) { return r; });
+    document.getElementById("success").textContent =
+      allGood ? "Registration successful!" : "";
+  });
+</script>
+</body>
+</html>
