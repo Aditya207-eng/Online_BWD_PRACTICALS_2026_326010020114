@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subjects</title>
+  <style>
+    body { font-family: Arial; background: #f2f2f2; margin: 20px; }
+    h1 { text-align: center; }
+    .container { display: flex; gap: 20px; max-width: 800px; margin: auto; }
+    ul { list-style: none; padding: 0; width: 40%; }
+    li { background: white; padding: 12px; margin-bottom: 8px; cursor: pointer; }
+    li:hover { background: #d6e4ff; }
+    li.active { background: #3366cc; color: white; }
+    #info { background: white; padding: 20px; width: 60%; }
+  </style>
+</head>
+<body>
+
+  <h1>Subjects</h1>
+
+  <div class="container">
+    <ul id="subjectList"></ul>
+    <div id="info">
+      <h2>Subject Information</h2>
+      <p>Click on a subject to see its details.</p>
+    </div>
+  </div>
+
+  <script>
+    // Array of subjects
+    var subjects = [
+      { name: "HTML", code: "CS101", credits: 4, faculty: "Hardik Chavda", description: "Structure of web pages using tags." },
+      { name: "CSS", code: "CS102", credits: 3, faculty: "Pooja Paun", description: "Styling and layout of web pages." },
+      { name: "JavaScript", code: "CS103", credits: 4, faculty: "Dr. Mahaditya Sarvaiya", description: "Making web pages interactive." },
+      { name: "Database", code: "CS104", credits: 3, faculty: "Hardik Chavda", description: "Storing data using SQL." }
+    ];
+
+    var list = document.getElementById("subjectList");
+    var info = document.getElementById("info");
+
+    // Function to show the subject list
+    function showSubjects() {
+      for (var i = 0; i < subjects.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = subjects[i].name;
+        li.setAttribute("data-index", i);
+
+        // Event: click
+        li.addEventListener("click", function () {
+          showInfo(this.getAttribute("data-index"));
+          highlight(this);
+        });
+
+        list.appendChild(li);
+      }
+    }
+
+    // Function to show subject details
+    function showInfo(index) {
+      var s = subjects[index];
+      info.innerHTML =
+        "<h2>" + s.name + "</h2>" +
+        "<p><b>Code:</b> " + s.code + "</p>" +
+        "<p><b>Credits:</b> " + s.credits + "</p>" +
+        "<p><b>Faculty:</b> " + s.faculty + "</p>" +
+        "<p><b>Description:</b> " + s.description + "</p>";
+    }
+
+    // Function to highlight selected subject
+    function highlight(selected) {
+      var items = document.querySelectorAll("li");
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.remove("active");
+      }
+      selected.classList.add("active");
+    }
+
+    showSubjects();
+  </script>
+
+</body>
+</html>
